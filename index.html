@@ -630,41 +630,41 @@ body{background:#111;font-family:-apple-system,'SF Pro Text','Helvetica Neue',sa
 
       <div class="div-lbl"><div class="div-line"></div><div class="div-txt">Communication Boundaries</div><div class="div-line"></div></div>
 
-      <div class="bound-card">
-        <div class="bound-hdr">
-          <div><div class="bound-title">Restrict messaging across teams</div><div class="bound-sub">Same location, different team</div></div>
-          <div class="tog off" onclick="toggleBoundary(this,'team')"></div>
+      <!-- Cross-team row -->
+      <div style="background:#fff;padding:11px 18px;border-bottom:.5px solid #EBEBEB">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:600;color:#000">Cross-team messaging</div>
+            <div style="font-size:11px;color:#AAA;margin-top:2px">Same location, different team</div>
+          </div>
+          <div id="teamStateBadge" style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;background:#E8F5E9;color:#2E7D32;white-space:nowrap;flex-shrink:0">Allowed</div>
+          <div onclick="toggleBoundEdit('team')" style="font-size:12px;font-weight:600;color:#4A6CF7;cursor:pointer;flex-shrink:0">Edit</div>
         </div>
-        <div class="bound-list" id="teamOpenList">
-          <div class="bound-item">✓ Members can message peers on any team at this location</div>
-          <div class="bound-item">✓ One level up (their manager) is unaffected</div>
-        </div>
-        <div class="bound-list" id="teamRestrictList" style="display:none">
-          <div class="bound-item neg">✕ Members can only message within their own team</div>
-          <div class="bound-item neg">✕ Existing cross-team chats stay active, but closed to new members</div>
-        </div>
-        <div class="bound-exception" id="teamException" style="display:none">
-          <div class="bound-exception-lbl">Who's exempt from this restriction?</div>
-          <div class="bound-radio sel" onclick="selectException(this)"><span class="bound-radio-dot"></span><span class="exc-label-1">Shift Lead and above</span></div>
-          <div class="bound-radio" onclick="selectException(this)"><span class="bound-radio-dot"></span><span>Org Admin only</span></div>
+        <div id="teamEditPanel" style="display:none;margin-top:10px;padding-top:10px;border-top:.5px solid #F0F0F0">
+          <div class="bound-exception-lbl">Who can message across teams?</div>
+          <div id="teamRadio1" class="bound-radio sel" onclick="selectTeamExc(0)"><span class="bound-radio-dot"></span><span>Everyone · no restriction</span></div>
+          <div id="teamRadio2" class="bound-radio" onclick="selectTeamExc(1)"><span class="bound-radio-dot"></span><span class="exc-label-1">Shift Lead and above only</span></div>
+          <div id="teamRadio3" class="bound-radio" onclick="selectTeamExc(2)"><span class="bound-radio-dot"></span><span>Org Admin only</span></div>
+          <div onclick="saveBoundEdit('team')" style="margin-top:10px;background:#4A6CF7;color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border-radius:8px;text-align:center;cursor:pointer">Save</div>
         </div>
       </div>
 
-      <div class="bound-card">
-        <div class="bound-hdr">
-          <div><div class="bound-title">Restrict messaging across locations</div><div class="bound-sub">Different branch, same org</div></div>
-          <div class="tog on" onclick="toggleBoundary(this,'loc')"></div>
+      <!-- Cross-location row -->
+      <div style="background:#fff;padding:11px 18px;border-bottom:.5px solid #EBEBEB">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+          <div style="flex:1;min-width:0">
+            <div style="font-size:13px;font-weight:600;color:#000">Cross-location messaging</div>
+            <div style="font-size:11px;color:#AAA;margin-top:2px">Different branch, same org</div>
+          </div>
+          <div id="locStateBadge" style="font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;background:#FFF0EE;color:#D32F2F;white-space:nowrap;flex-shrink:0">Admin only</div>
+          <div onclick="toggleBoundEdit('loc')" style="font-size:12px;font-weight:600;color:#4A6CF7;cursor:pointer;flex-shrink:0">Edit</div>
         </div>
-        <div class="bound-list" id="locRestrictList">
-          <div class="bound-item neg">✕ Members can only message contacts at their own location</div>
-        </div>
-        <div class="bound-list" id="locOpenList" style="display:none">
-          <div class="bound-item">✓ Members can message peers at any location</div>
-        </div>
-        <div class="bound-exception" id="locException">
-          <div class="bound-exception-lbl">Who's exempt from this restriction?</div>
-          <div class="bound-radio sel" onclick="selectException(this)"><span class="bound-radio-dot"></span><span>Org Admin only</span></div>
-          <div class="bound-radio" onclick="selectException(this)"><span class="bound-radio-dot"></span><span class="exc-label-1">Shift Lead and above</span></div>
+        <div id="locEditPanel" style="display:none;margin-top:10px;padding-top:10px;border-top:.5px solid #F0F0F0">
+          <div class="bound-exception-lbl">Who can message across locations?</div>
+          <div id="locRadio1" class="bound-radio" onclick="selectLocExc(0)"><span class="bound-radio-dot"></span><span>Everyone · no restriction</span></div>
+          <div id="locRadio2" class="bound-radio" onclick="selectLocExc(1)"><span class="bound-radio-dot"></span><span class="exc-label-1">Shift Lead and above</span></div>
+          <div id="locRadio3" class="bound-radio sel" onclick="selectLocExc(2)"><span class="bound-radio-dot"></span><span>Org Admin only</span></div>
+          <div onclick="saveBoundEdit('loc')" style="margin-top:10px;background:#4A6CF7;color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border-radius:8px;text-align:center;cursor:pointer">Save</div>
         </div>
       </div>
 
@@ -1299,25 +1299,47 @@ function switchAssignState(state){
   }
 }
 
-function toggleBoundary(tog, kind){
-  const isOn = tog.classList.contains('on');
-  tog.classList.toggle('on', !isOn);
-  tog.classList.toggle('off', isOn);
-  const restricted = !isOn; // toggle now ON means the restriction is active
-  if(kind === 'team'){
-    document.getElementById('teamOpenList').style.display = restricted ? 'none' : '';
-    document.getElementById('teamRestrictList').style.display = restricted ? '' : 'none';
-    document.getElementById('teamException').style.display = restricted ? '' : 'none';
-  } else {
-    document.getElementById('locRestrictList').style.display = restricted ? '' : 'none';
-    document.getElementById('locOpenList').style.display = restricted ? 'none' : '';
-    document.getElementById('locException').style.display = restricted ? '' : 'none';
-  }
+// ───────────────────────── Page 4: Communication Boundaries ─────────────────────────
+var teamExcState = 0; // 0=everyone, 1=shift lead+, 2=admin only
+var locExcState  = 2; // 0=everyone, 1=shift lead+, 2=admin only
+
+function toggleBoundEdit(axis){
+  var panel = document.getElementById(axis + 'EditPanel');
+  var isOpen = panel.style.display !== 'none';
+  document.getElementById('teamEditPanel').style.display = 'none';
+  document.getElementById('locEditPanel').style.display = 'none';
+  if(!isOpen) panel.style.display = '';
 }
-function selectException(el){
-  const group = el.closest('.bound-exception');
-  group.querySelectorAll('.bound-radio').forEach(function(r){ r.classList.remove('sel'); });
-  el.classList.add('sel');
+function selectTeamExc(idx){
+  teamExcState = idx;
+  [0,1,2].forEach(function(i){
+    document.getElementById('teamRadio'+(i+1)).classList.toggle('sel', i === idx);
+  });
+}
+function selectLocExc(idx){
+  locExcState = idx;
+  [0,1,2].forEach(function(i){
+    document.getElementById('locRadio'+(i+1)).classList.toggle('sel', i === idx);
+  });
+}
+function saveBoundEdit(axis){
+  var badge = document.getElementById(axis + 'StateBadge');
+  var state = (axis === 'team') ? teamExcState : locExcState;
+  var excLabel = document.querySelector('.exc-label-1') ? document.querySelector('.exc-label-1').textContent : 'Shift Lead and above';
+  if(state === 0){
+    badge.textContent = 'Allowed';
+    badge.style.background = '#E8F5E9';
+    badge.style.color = '#2E7D32';
+  } else if(state === 1){
+    badge.textContent = excLabel;
+    badge.style.background = '#FFF8E7';
+    badge.style.color = '#F5A623';
+  } else {
+    badge.textContent = 'Admin only';
+    badge.style.background = '#FFF0EE';
+    badge.style.color = '#D32F2F';
+  }
+  document.getElementById(axis + 'EditPanel').style.display = 'none';
 }
 function updateExceptionLabels(){
   const label = (customTiers.length >= 2 && customTiers[1].name && customTiers[1].name.trim())
