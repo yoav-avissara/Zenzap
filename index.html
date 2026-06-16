@@ -362,11 +362,13 @@ body{background:#111;font-family:-apple-system,'SF Pro Text','Helvetica Neue',sa
 <!-- PAGE 1 — Screen 1: Trigger -->
 <div class="sg page" data-page="1">
   <div class="sg-n">Screen 1 · 9</div>
-  <div class="sg-t">Entry points — four paths, three distinct nudges</div>
+  <div class="sg-t">Entry points — three nudges, three paths</div>
+  <div class="hint">↑ Each nudge leads into the same wizard</div>
   <div class="variant-row">
 
+    <!-- PATH 1: Free org → paywall -->
     <div class="variant-wrap">
-      <div class="variant-lbl" style="color:#E05A1C">Free org · 20+ members · paywall first</div>
+      <div class="variant-lbl" style="color:#E05A1C">Free org · upgrade prompt first</div>
       <div class="phone">
         <div class="sb"><span class="sb-t">10:20</span><div class="sb-r">●●● 🔋</div></div>
         <div class="hh"><div class="hh-ic"><svg><use href="#i-gear"/></svg></div><div class="hh-ic"><svg><use href="#i-search"/></svg></div><div class="hh-pill"><span class="hh-name">Pizza Yoav</span><div class="hh-av" style="background:linear-gradient(135deg,#E05A1C,#B83A10)">PY</div></div></div>
@@ -392,8 +394,9 @@ body{background:#111;font-family:-apple-system,'SF Pro Text','Helvetica Neue',sa
       </div>
     </div>
 
+    <!-- PATH 2: Pro org, new — straight to setup -->
     <div class="variant-wrap">
-      <div class="variant-lbl blue">Pro org · new or few chats · straight into setup</div>
+      <div class="variant-lbl blue">Pro org · new workspace · set up now</div>
       <div class="phone">
         <div class="sb"><span class="sb-t">10:20</span><div class="sb-r">●●● 🔋</div></div>
         <div class="hh"><div class="hh-ic"><svg><use href="#i-gear"/></svg></div><div class="hh-ic"><svg><use href="#i-search"/></svg></div><div class="hh-pill"><span class="hh-name">Pizza Yoav</span><div class="hh-av" style="background:linear-gradient(135deg,#E05A1C,#B83A10)">PY</div></div></div>
@@ -419,20 +422,20 @@ body{background:#111;font-family:-apple-system,'SF Pro Text','Helvetica Neue',sa
       </div>
     </div>
 
+    <!-- PATH 3: Pro org, existing — new feature announcement -->
     <div class="variant-wrap">
-      <div class="variant-lbl amber">Pro org · existing chats · needs sorting (or resume)</div>
+      <div class="variant-lbl" style="color:#764BA2">Pro org · existing workspace · new feature</div>
       <div class="phone">
         <div class="sb"><span class="sb-t">10:20</span><div class="sb-r">●●● 🔋</div></div>
         <div class="hh"><div class="hh-ic"><svg><use href="#i-gear"/></svg></div><div class="hh-ic"><svg><use href="#i-search"/></svg></div><div class="hh-pill"><span class="hh-name">Pizza Yoav</span><div class="hh-av" style="background:linear-gradient(135deg,#E05A1C,#B83A10)">PY</div></div></div>
         <div class="ftabs"><div class="fp on">Chats</div><div class="fp">★ Starred</div><div class="fp">Unread</div></div>
         <div style="background:#F8F8F8;padding-bottom:8px">
-          <div class="nudge amber">
+          <div class="nudge" style="background:linear-gradient(135deg,#F3EEFF,#EBE0FF);border:1px solid rgba(118,75,162,.15)">
             <div class="nudge-x">✕</div>
-            <span class="nudge-icon">📋</span>
-            <div class="nudge-title">Organize your existing chats</div>
-            <div class="nudge-body">You have 6 chats. No history lost — set up Teams & Locations to control who sees what.</div>
-            <div class="nudge-prog"><div class="nudge-prog-bar"><div class="nudge-prog-fill" style="width:0%;background:#F5A623"></div></div><div class="nudge-prog-lbl" style="color:#F5A623">Not started</div></div>
-            <div class="nudge-btn amber" onclick="nextPage()">Start setup →</div>
+            <span class="nudge-icon">✨</span>
+            <div class="nudge-title">New: Teams & Locations</div>
+            <div class="nudge-body">Organize your workspace so each person only sees what's relevant to them. Takes about 10 minutes — history stays untouched.</div>
+            <div class="nudge-btn" style="background:linear-gradient(135deg,#667EEA,#764BA2)" onclick="nextPage()">Try it now →</div>
           </div>
           <div class="crow"><div class="cav-r" style="background:#FFF3E0">👨‍🍳</div><div class="ci"><div class="cn">Kitchen — All Branches</div><div class="cp">Ali: New prep schedule</div></div><div class="cm"><div class="ct">Jun 3</div><div class="cbadge">4</div></div></div>
           <div class="crow"><div class="cav-r" style="background:#E3F2FD">🍷</div><div class="ci"><div class="cn">Waiters Group</div><div class="cp">Shift starts 18:00 today</div></div><div class="cm"><div class="ct">Jun 3</div></div></div>
@@ -448,7 +451,7 @@ body{background:#111;font-family:-apple-system,'SF Pro Text','Helvetica Neue',sa
     </div>
 
   </div>
-  <div class="ann"><div class="ann-dot"></div><div class="ann-txt"><strong>Three nudges, four entry points.</strong> <strong>Orange (Free → paywall):</strong> same 20-member threshold, but the CTA leads to a pricing screen first — completing the upgrade drops directly into Step 1, so setup is part of the migration to paid. <strong>Blue (Pro, new):</strong> few or no existing chats, straight into the wizard; Step 2 (Industry) asked from scratch; Step 4 may be sparse or empty — "Skip for now" saves the structure and re-surfaces assignment when members join. <strong>Amber (Pro, existing):</strong> existing flat chats that Step 5 will sort; Step 2 is pre-filled from workspace signals (channel names, prior input), admin can change; Step 4 has a full member list. <strong>Incomplete setup re-surface:</strong> the amber nudge reappears with a progress bar showing how far the admin got — tapping it resumes at the last incomplete step, not Step 1.</div></div>
+  <div class="ann"><div class="ann-dot"></div><div class="ann-txt"><strong>Three nudges, one wizard.</strong> <strong>Orange (Free):</strong> paywall fires first — completing the upgrade drops straight into setup, so the feature is the reason to upgrade. <strong>Blue (Pro, new):</strong> threshold trigger at 20 members, straight to the wizard; Step 2 asked from scratch, Step 4 may be empty. <strong>Purple (Pro, existing):</strong> feature launch announcement to orgs already on Pro with existing chats; Step 2 pre-filled from workspace signals, Step 4 has a full member list.</div></div>
 </div>
 
 <!-- PAGE 2 — Screen 2: Step 1, Locations (single phone, toggle switches view) -->
@@ -1047,6 +1050,25 @@ document.addEventListener('keydown', function(e){
   if(e.key === 'ArrowRight') nextPage();
   if(e.key === 'ArrowLeft') prevPage();
 });
+
+// ───────────────────────── Page 1: Entry points ─────────────────────────
+function switchProState(state){
+  const fresh = document.getElementById('s1-fresh');
+  const progress = document.getElementById('s1-progress');
+  const tabFresh = document.getElementById('s1-tab-fresh');
+  const tabProgress = document.getElementById('s1-tab-progress');
+  if(state === 'fresh'){
+    fresh.style.display = '';
+    progress.style.display = 'none';
+    tabFresh.style.background = '#4A6CF7'; tabFresh.style.color = '#fff';
+    tabProgress.style.background = '#fff'; tabProgress.style.color = '#AAA';
+  } else {
+    fresh.style.display = 'none';
+    progress.style.display = '';
+    tabFresh.style.background = '#fff'; tabFresh.style.color = '#AAA';
+    tabProgress.style.background = '#F5A623'; tabProgress.style.color = '#fff';
+  }
+}
 
 // ───────────────────────── Page 2: Locations ─────────────────────────
 function toggleLoc(tog){
