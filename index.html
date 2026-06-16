@@ -503,54 +503,100 @@ body{background:#111;font-family:-apple-system,'SF Pro Text','Helvetica Neue',sa
 <div class="sg page" data-page="3">
   <div class="sg-n">Screen 3 · 9</div>
   <div class="sg-t">Wizard — Step 2 · Industry & teams</div>
-  <div class="hint">↑ Tap a different industry — suggested teams update</div>
-  <div class="phone full">
-    <div class="sb"><span class="sb-t">10:24</span><div class="sb-r">●●● 🔋</div></div>
-    <div class="nb"><div class="nb-back" onclick="prevPage()"><svg><use href="#i-chevl"/></svg></div><div class="nb-title">Teams & Locations</div><div class="nb-sp"></div></div>
-    <div class="wprog"><div class="ws done"></div><div class="ws now"></div><div class="ws next"></div><div class="ws next"></div><div class="ws next"></div></div>
-    <div style="background:#fff;padding-bottom:16px">
-      <div class="wb">
-        <div class="wstep">Step 2 of 5</div>
-        <div class="wtitle">What kind of business?</div>
-        <div class="wsub">We'll suggest the right teams for your industry.</div>
-        <div style="background:#FFFBEE;border:1px solid rgba(245,166,35,.25);border-radius:10px;padding:9px 12px;margin-bottom:12px;font-size:12px;color:#7A5200;display:flex;align-items:center;justify-content:space-between;gap:8px">
-          <span>✨ Pre-filled based on your existing channels</span>
-          <span style="font-size:11px;font-weight:700;color:#F5A623;white-space:nowrap">Change ▾</span>
-        </div>
-        <div class="igrid">
-          <div class="icard sel" data-industry="Restaurant" onclick="selectIndustry(this)"><div class="icard-icon">🍽️</div><div class="icard-lbl">Restaurant</div></div>
-          <div class="icard" data-industry="Hotel" onclick="selectIndustry(this)"><div class="icard-icon">🏨</div><div class="icard-lbl">Hotel</div></div>
-          <div class="icard" data-industry="Retail" onclick="selectIndustry(this)"><div class="icard-icon">🛍️</div><div class="icard-lbl">Retail</div></div>
-          <div class="icard" data-industry="Healthcare" onclick="selectIndustry(this)"><div class="icard-icon">🏥</div><div class="icard-lbl">Healthcare</div></div>
-          <div class="icard" data-industry="Construction" onclick="selectIndustry(this)"><div class="icard-icon">🏗️</div><div class="icard-lbl">Construction</div></div>
-          <div class="icard" data-industry="Other" onclick="selectIndustry(this)" style="border:2px dashed #D8D8D8;background:#FAFAFA"><div class="icard-icon" style="font-size:17px;color:#BBB">＋</div><div class="icard-lbl" style="color:#BBB">Other</div></div>
-        </div>
-        <div class="aicard">
-          <div class="aihdr">
-            <div class="aibadge">AI</div>
-            <div class="ait">Suggested teams</div>
+  <div class="hint">↑ Left: new org asks the question · Right: existing org skips it · tap chips to remove</div>
+  <div class="variant-row">
+
+    <!-- LEFT: New org — full industry grid -->
+    <div class="variant-wrap">
+      <div class="variant-lbl blue">New org · industry unknown</div>
+      <div class="phone full">
+        <div class="sb"><span class="sb-t">10:24</span><div class="sb-r">●●● 🔋</div></div>
+        <div class="nb"><div class="nb-back" onclick="prevPage()"><svg><use href="#i-chevl"/></svg></div><div class="nb-title">Teams & Locations</div><div class="nb-sp"></div></div>
+        <div class="wprog"><div class="ws done"></div><div class="ws now"></div><div class="ws next"></div><div class="ws next"></div><div class="ws next"></div></div>
+        <div style="background:#fff;padding-bottom:16px">
+          <div class="wb">
+            <div class="wstep">Step 2 of 5</div>
+            <div class="wtitle">What kind of business?</div>
+            <div class="wsub">We'll suggest the right teams for your industry.</div>
+            <div class="igrid">
+              <div class="icard sel" data-industry="Restaurant" onclick="selectIndustry(this)"><div class="icard-icon">🍽️</div><div class="icard-lbl">Restaurant</div></div>
+              <div class="icard" data-industry="Hotel" onclick="selectIndustry(this)"><div class="icard-icon">🏨</div><div class="icard-lbl">Hotel</div></div>
+              <div class="icard" data-industry="Retail" onclick="selectIndustry(this)"><div class="icard-icon">🛍️</div><div class="icard-lbl">Retail</div></div>
+              <div class="icard" data-industry="Healthcare" onclick="selectIndustry(this)"><div class="icard-icon">🏥</div><div class="icard-lbl">Healthcare</div></div>
+              <div class="icard" data-industry="Construction" onclick="selectIndustry(this)"><div class="icard-icon">🏗️</div><div class="icard-lbl">Construction</div></div>
+              <div class="icard" data-industry="Other" onclick="selectIndustry(this)" style="border:2px dashed #D8D8D8;background:#FAFAFA"><div class="icard-icon" style="font-size:17px;color:#BBB">＋</div><div class="icard-lbl" style="color:#BBB">Other</div></div>
+            </div>
+            <div class="aicard">
+              <div class="aihdr">
+                <div class="aibadge">AI</div>
+                <div class="ait">Suggested teams</div>
+              </div>
+              <div class="chips" id="teamChips">
+                <div class="chip">👨‍🍳 Kitchen <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
+                <div class="chip">🍷 Waiters <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
+                <div class="chip">💼 Management <span class="chip-scope">· all</span><span class="chip-x">✕</span></div>
+                <div class="chip">🧹 Cleaning <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
+                <div class="chip-add">＋ Add</div>
+              </div>
+            </div>
+            <div class="btn-p" onclick="nextPage()">Next →</div>
           </div>
-          <div class="chips" id="teamChips">
-            <div class="chip">👨‍🍳 Kitchen <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
-            <div class="chip">🍷 Waiters <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
-            <div class="chip">💼 Management <span class="chip-scope">· all</span><span class="chip-x">✕</span></div>
-            <div class="chip">🧹 Cleaning <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
-            <div class="chip-add">＋ Add</div>
-          </div>
         </div>
-        <div class="btn-p" onclick="nextPage()">Next →</div>
+        <div class="tabbar">
+          <div class="tab active"><div class="tab-iw"><svg><use href="#i-admin"/></svg></div><div class="tab-l">Admin</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-ext"/></svg></div><div class="tab-l">Extensions</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-lib"/></svg></div><div class="tab-l">Library</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-contacts"/></svg></div><div class="tab-l">Contacts</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-home"/></svg></div><div class="tab-l">Home</div></div>
+        </div>
       </div>
     </div>
-    <div class="tabbar">
-      <div class="tab active"><div class="tab-iw"><svg><use href="#i-admin"/></svg></div><div class="tab-l">Admin</div></div>
-      <div class="tab"><div class="tab-iw"><svg><use href="#i-ext"/></svg></div><div class="tab-l">Extensions</div></div>
-      <div class="tab"><div class="tab-iw"><svg><use href="#i-lib"/></svg></div><div class="tab-l">Library</div></div>
-      <div class="tab"><div class="tab-iw"><svg><use href="#i-contacts"/></svg></div><div class="tab-l">Contacts</div></div>
-      <div class="tab"><div class="tab-iw"><svg><use href="#i-home"/></svg></div><div class="tab-l">Home</div></div>
+
+    <!-- RIGHT: Existing org — skip grid, show teams directly -->
+    <div class="variant-wrap">
+      <div class="variant-lbl" style="color:#764BA2">Existing org · industry inferred from channels</div>
+      <div class="phone full">
+        <div class="sb"><span class="sb-t">10:24</span><div class="sb-r">●●● 🔋</div></div>
+        <div class="nb"><div class="nb-back" onclick="prevPage()"><svg><use href="#i-chevl"/></svg></div><div class="nb-title">Teams & Locations</div><div class="nb-sp"></div></div>
+        <div class="wprog"><div class="ws done"></div><div class="ws now"></div><div class="ws next"></div><div class="ws next"></div><div class="ws next"></div></div>
+        <div style="background:#fff;padding-bottom:16px">
+          <div class="wb">
+            <div class="wstep">Step 2 of 5</div>
+            <div class="wtitle">Your teams</div>
+            <div class="wsub">Found in your workspace. Remove any that don't fit, or add new ones.</div>
+          </div>
+          <div style="padding:0 18px 14px">
+            <div class="aicard">
+              <div class="aihdr">
+                <div class="aibadge">AI</div>
+                <div class="ait">Found in your workspace</div>
+              </div>
+              <div class="chips">
+                <div class="chip">👨‍🍳 Kitchen <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
+                <div class="chip">🍷 Waiters <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
+                <div class="chip">💼 Management <span class="chip-scope">· all</span><span class="chip-x">✕</span></div>
+                <div class="chip">🧹 Cleaning <span class="chip-scope">· location</span><span class="chip-x">✕</span></div>
+                <div class="chip-add">＋ Add</div>
+              </div>
+            </div>
+            <div style="margin-top:10px;display:flex;align-items:center;justify-content:center">
+              <div style="font-size:12px;color:#AAA">Not right? <span style="color:#4A6CF7;font-weight:600;cursor:pointer">Change industry ›</span></div>
+            </div>
+          </div>
+          <div style="padding:0 18px"><div class="btn-p" onclick="nextPage()">Next →</div></div>
+        </div>
+        <div class="tabbar">
+          <div class="tab active"><div class="tab-iw"><svg><use href="#i-admin"/></svg></div><div class="tab-l">Admin</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-ext"/></svg></div><div class="tab-l">Extensions</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-lib"/></svg></div><div class="tab-l">Library</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-contacts"/></svg></div><div class="tab-l">Contacts</div></div>
+          <div class="tab"><div class="tab-iw"><svg><use href="#i-home"/></svg></div><div class="tab-l">Home</div></div>
+        </div>
+      </div>
     </div>
+
   </div>
-  <div class="ann"><div class="ann-dot"></div><div class="ann-txt"><strong>Clean and focused.</strong> One question: what's your business? AI generates team chips immediately on selection, and the suggestions change per industry — a Hotel gets Front Desk/Housekeeping, a Clinic gets Nursing/Reception. Scope tag (· location / · all) tells admin whether a team is location-scoped or org-wide — no permission language, just scope. Admin's only job: is this the right list of teams?</div></div>
-</div>
+  <div class="ann"><div class="ann-dot"></div><div class="ann-txt"><strong>If you know the answer, don't ask the question.</strong> <strong>Left (new org):</strong> industry unknown — ask once, AI generates chips immediately on selection. <strong>Right (existing org):</strong> channel names already tell us it's a restaurant — skip the grid entirely, show the teams we found, let the admin confirm or edit. "Change industry ›" is the escape hatch if the inference is wrong, but it's not the default path. Admin's only job either way: is this the right list of teams?</div></div>
 
 <!-- PAGE 4 — Screen 4: Step 3, Org Structure -->
 <div class="sg page" data-page="4">
